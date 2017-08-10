@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 curl -XPUT "http://$ES_HOST/hemicycle?pretty" -H 'Content-Type: application/json' -d'
 {
