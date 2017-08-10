@@ -16,4 +16,16 @@ client.ping({
   }, (error) => { console.log('Elasticsearch client is down', error); })
 ;
 
+client.bulkPromise = (body) => new Promise((resolve, reject) => {
+  client.bulk({
+    body: body
+  }, function (err, resp) {
+    if (err) {
+      console.error(err)
+      return reject(err)
+    }
+    return resolve(resp)
+  });
+})
+
 module.exports = client

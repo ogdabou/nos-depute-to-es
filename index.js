@@ -13,12 +13,7 @@ const getDeputes = async () => {
     bulkBody.push(depute)
   })
 
-  esClient.bulk({
-    body: bulkBody
-  }, function (err, resp) {
-    if (err) console.error(err)
-    console.log('Push success', resp)
-  });
+  await esClient.bulkPromise(bulkBody);
 }
 
 const getSynthesis = async () => {
@@ -30,18 +25,21 @@ const getSynthesis = async () => {
     bulkBody.push({ index:  { _index: 'hemicycle', _type: 'activity', _id: depute.id} })
     bulkBody.push(depute)
   })
-  esClient.bulk({
-    body: bulkBody
-  }, function (err, resp) {
-    if (err) console.error(err)
-    console.log('Push success', resp)
-  });
+  await esClient.bulkPromise(bulkBody);
+  console.log('synthesis ')
 }
 
 const main = async () => {
-  await getDeputes()
-  await getSynthesis()
-  console.log('coucou')
+  try {
+    await Promise.all([
+      getDeputes(),
+      getSynthesis()
+    ])
+  } catch (error) {
+    console.error(error)
+  }
+
+  console.log('Done')
 }
 
 module.exports = main()
