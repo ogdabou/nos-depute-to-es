@@ -14,6 +14,7 @@ const getDeputes = async () => {
   })
 
   await esClient.bulkPromise(bulkBody);
+  console.log('deputes')
 }
 
 const getSynthesis = async () => {

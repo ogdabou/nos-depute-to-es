@@ -7,11 +7,13 @@ Tested on ES 1.7 / ES 5.5
 *Local*
 ```bash
 npm install
+ES_HOST={domain}{port} ./putMapping.sh
 ES_HOST={domain}:{port} node --harmony-async-await index.js
 ```
 
 *Docker*
 ```
+ES_HOST={domain}:{port} ./putMapping.sh
 docker build -t deputes-to-es .
 docker run -e "ES_HOST={}" depute-to-es
 ```
