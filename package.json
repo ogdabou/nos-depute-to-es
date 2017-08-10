@@ -1,0 +1,15 @@
+{
+  "name": "deputee",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "common-env": "^6.1.0",
+    "elasticsearch": "^13.3.1"
+  }
+}
